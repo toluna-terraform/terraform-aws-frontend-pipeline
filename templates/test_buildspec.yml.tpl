@@ -16,7 +16,7 @@ phases:
     commands:
       - cd service/test
       - yarn add cypress --dev
-      - cypress run -- --config-file=cypress.${ENV_NAME}.json
+      - yarn test --config-file=cypress.${ENV_NAME}.json
 
 reports:
   ${APP_NAME}-${ENV_NAME}-IntegrationTestReport:
