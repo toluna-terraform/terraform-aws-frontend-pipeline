@@ -7,5 +7,6 @@
   trigger_branch    = "develop"
   pipeline_type = "dev"
   target_bucket = "my-bucket"
+  test_bucket = "my-bucket-test"
   distribution_id = "XXXXXXX"
   src_bucket = "qa.my-app-non-prod.toluna-internal.com"

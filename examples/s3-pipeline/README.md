@@ -47,6 +47,7 @@ No requirements.
 | <a name="input_src_bucket"></a> [src\_bucket](#input\_src\_bucket) | n/a | `any` | n/a | yes |
 | <a name="input_target_bucket"></a> [target\_bucket](#input\_target\_bucket) | n/a | `any` | n/a | yes |
 | <a name="input_termination_wait_time_in_minutes"></a> [termination\_wait\_time\_in\_minutes](#input\_termination\_wait\_time\_in\_minutes) | n/a | `number` | `120` | no |
+| <a name="input_test_bucket"></a> [test\_bucket](#input\_test\_bucket) | n/a | `any` | n/a | yes |
 | <a name="input_trigger_branch"></a> [trigger\_branch](#input\_trigger\_branch) | n/a | `string` | n/a | yes |
 
 ## Outputs

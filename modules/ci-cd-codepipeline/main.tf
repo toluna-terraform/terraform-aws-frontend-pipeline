@@ -63,8 +63,8 @@ resource "aws_codepipeline" "codepipeline" {
       version         = "1"
       run_order       = 1
       configuration = {
-        BucketName = "${var.target_bucket}"
-        ObjectKey  = "pre-release"
+        BucketName = "${var.test_bucket}"
+        CannedACL  = "public-read"
         Extract    = true
       }
     }

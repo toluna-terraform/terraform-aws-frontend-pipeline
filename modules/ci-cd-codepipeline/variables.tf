@@ -30,6 +30,10 @@ variable "target_bucket" {
     
 }
 
+variable "test_bucket" {
+    
+}
+
 variable "app_name" {
   default = "chorus"
 }

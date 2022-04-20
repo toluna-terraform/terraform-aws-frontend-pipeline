@@ -10,6 +10,7 @@ module "ci-cd-code-pipeline" {
   source_repository            = var.source_repository
   s3_bucket                    = local.artifacts_bucket_name
   target_bucket                = var.target_bucket
+  test_bucket                  = var.test_bucket
   build_codebuild_projects     = [module.build.attributes.name]
   post_codebuild_projects      = [module.post.attributes.name]
   test_codebuild_projects      = [module.test.attributes.name]
@@ -83,6 +84,7 @@ module "post" {
     REPO_NAME = var.source_repository,
     PIPELINE_TYPE = var.pipeline_type,
     BUCKET = var.target_bucket,
+    TEST_BUCKET = var.test_bucket,
     DISTRIBUTION_ID = var.distribution_id
     })
 

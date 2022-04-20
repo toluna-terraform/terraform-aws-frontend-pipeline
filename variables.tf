@@ -53,6 +53,10 @@ variable "target_bucket" {
     
 }
 
+variable "test_bucket" {
+    
+}
+
 variable "distribution_id" {
   
 }

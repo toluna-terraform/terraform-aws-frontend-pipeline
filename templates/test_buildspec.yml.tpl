@@ -12,10 +12,6 @@ phases:
       - yum install -y yum-utils
       - yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
       - yum install -y xorg-x11-server-Xvfb gtk2-devel gtk3-devel libnotify-devel GConf2 nss libXScrnSaver alsa-lib
-      - | 
-        aws s3 mv s3://${BUCKET}/pre-release/ s3://${BUCKET}/ --recursive
-        aws s3 rm s3://${BUCKET}/pre-release/
-      - aws cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID} --paths "/pre-release/**/*" "/pre-release/*"
   build:
     commands:
       - cd service/test

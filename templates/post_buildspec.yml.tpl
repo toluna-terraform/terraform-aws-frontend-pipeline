@@ -13,8 +13,8 @@ phases:
   build:
     commands:
       - | 
-        aws s3 mv s3://${BUCKET}/pre-release/ s3://${BUCKET}/ --recursive
-        aws s3 rm s3://${BUCKET}/pre-release/
+        aws s3 sync s3://${TEST_BUCKET}/ s3://${BUCKET}/
+        aws s3 rm s3://${TEST_BUCKET} --recursive
       - aws cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID} --paths "/**/*" "/*"
   post_build:
     commands:
