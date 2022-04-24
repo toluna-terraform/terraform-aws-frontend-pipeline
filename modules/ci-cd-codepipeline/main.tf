@@ -35,7 +35,7 @@ resource "aws_codepipeline" "codepipeline" {
     dynamic "action" {
       for_each = var.build_codebuild_projects
       content {
-        name             = action.value
+        name             = "Build"
         category         = "Build"
         owner            = "AWS"
         provider         = "CodeBuild"
