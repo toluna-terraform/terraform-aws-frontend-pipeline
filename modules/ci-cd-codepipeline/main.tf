@@ -31,11 +31,11 @@ resource "aws_codepipeline" "codepipeline" {
 
 
   stage {
-    name = var.pipeline_type
+    name = "Build"
     dynamic "action" {
       for_each = var.build_codebuild_projects
       content {
-        name             = "Build"
+        name             = action.value
         category         = "Build"
         owner            = "AWS"
         provider         = "CodeBuild"
