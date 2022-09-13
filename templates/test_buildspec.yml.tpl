@@ -14,7 +14,7 @@ phases:
       - yum install -y yum-utils
       - yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
       - yum install -y xorg-x11-server-Xvfb gtk2-devel gtk3-devel libnotify-devel GConf2 nss libXScrnSaver alsa-lib
-      # npm auth
+      # npm auth for ADO
       - |
       npm config set @toluna-ui-toolkit:registry https://pkgs.dev.azure.com/Toluna/_packaging/Toluna/npm/registry/
       npm config set //pkgs.dev.azure.com/Toluna/_packaging/Toluna/npm/registry/:_password $ADO_PASS
