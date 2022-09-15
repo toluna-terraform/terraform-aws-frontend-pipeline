@@ -64,3 +64,7 @@ variable "distribution_id" {
 variable "src_bucket" {
   
 }
+
+variable "test_distribution_id" {
+  
+}

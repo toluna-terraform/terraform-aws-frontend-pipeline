@@ -42,6 +42,7 @@ module "build" {
     ADO_PASSWORD = data.aws_ssm_parameter.ado_password.value,
     REPO_NAME = var.source_repository,
     BUCKET = var.target_bucket
+    TEST_DISTRIBUTION_ID = var.test_distribution_id
     SRC_BUCKET = var.src_bucket
   })
 }
@@ -86,6 +87,7 @@ module "post" {
     BUCKET = var.target_bucket,
     TEST_BUCKET = var.test_bucket,
     DISTRIBUTION_ID = var.distribution_id
+    TEST_DISTRIBUTION_ID = var.test_distribution_id
     })
 
 }

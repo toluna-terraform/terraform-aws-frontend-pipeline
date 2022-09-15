@@ -16,6 +16,7 @@ phases:
         aws s3 sync s3://${TEST_BUCKET}/ s3://${BUCKET}/
         aws s3 rm s3://${TEST_BUCKET} --recursive
       - aws cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID} --paths "/**/*" "/*"
+      - aws cloudfront create-invalidation --distribution-id ${TEST_DISTRIBUTION_ID} --paths "/**/*" "/*"
   post_build:
     commands:
       - |
