@@ -32,23 +32,25 @@ No requirements.
 
 ## Inputs
 
-| Name | Description | Type | Default | Required |
+| Name                                                                                                                                                    | Description | Type          | Default                                                                                      | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_app_name"></a> [app\_name](#input\_app\_name) | n/a | `string` | n/a | yes |
-| <a name="input_distribution_id"></a> [distribution\_id](#input\_distribution\_id) | n/a | `any` | n/a | yes |
-| <a name="input_env_name"></a> [env\_name](#input\_env\_name) | n/a | `string` | n/a | yes |
-| <a name="input_env_type"></a> [env\_type](#input\_env\_type) | n/a | `string` | n/a | yes |
-| <a name="input_environment_variables"></a> [environment\_variables](#input\_environment\_variables) | n/a | `map(string)` | `{}` | no |
-| <a name="input_environment_variables_parameter_store"></a> [environment\_variables\_parameter\_store](#input\_environment\_variables\_parameter\_store) | n/a | `map(string)` | <pre>{<br>  "ADO_PASSWORD": "/app/ado_password",<br>  "ADO_USER": "/app/ado_user"<br>}</pre> | no |
-| <a name="input_from_env"></a> [from\_env](#input\_from\_env) | n/a | `string` | n/a | yes |
-| <a name="input_pipeline_type"></a> [pipeline\_type](#input\_pipeline\_type) | n/a | `string` | n/a | yes |
-| <a name="input_run_integration_tests"></a> [run\_integration\_tests](#input\_run\_integration\_tests) | n/a | `bool` | `false` | no |
-| <a name="input_source_repository"></a> [source\_repository](#input\_source\_repository) | n/a | `string` | n/a | yes |
-| <a name="input_src_bucket"></a> [src\_bucket](#input\_src\_bucket) | n/a | `any` | n/a | yes |
-| <a name="input_target_bucket"></a> [target\_bucket](#input\_target\_bucket) | n/a | `any` | n/a | yes |
-| <a name="input_termination_wait_time_in_minutes"></a> [termination\_wait\_time\_in\_minutes](#input\_termination\_wait\_time\_in\_minutes) | n/a | `number` | `120` | no |
-| <a name="input_test_bucket"></a> [test\_bucket](#input\_test\_bucket) | n/a | `any` | n/a | yes |
-| <a name="input_trigger_branch"></a> [trigger\_branch](#input\_trigger\_branch) | n/a | `string` | n/a | yes |
+| <a name="input_app_name"></a> [app\_name](#input\_app\_name)                                                                                            | n/a | `string`      | n/a                                                                                          |   yes    |
+| <a name="input_distribution_id"></a> [distribution\_id](#input\_distribution\_id)                                                                       | n/a | `any`         | n/a                                                                                          |   yes    |
+| <a name="input_env_name"></a> [env\_name](#input\_env\_name)                                                                                            | n/a | `string`      | n/a                                                                                          |   yes    |
+| <a name="input_env_type"></a> [env\_type](#input\_env\_type)                                                                                            | n/a | `string`      | n/a                                                                                          |   yes    |
+| <a name="input_environment_variables"></a> [environment\_variables](#input\_environment\_variables)                                                     | n/a | `map(string)` | `{}`                                                                                         |    no    |
+| <a name="input_environment_variables_parameter_store"></a> [environment\_variables\_parameter\_store](#input\_environment\_variables\_parameter\_store) | n/a | `map(string)` | <pre>{<br>  "ADO_PASSWORD": "/app/ado_password",<br>  "ADO_USER": "/app/ado_user"<br>}</pre> |    no    |
+| <a name="input_from_env"></a> [from\_env](#input\_from\_env)                                                                                            | n/a | `string`      | n/a                                                                                          |   yes    |
+| <a name="input_pipeline_type"></a> [pipeline\_type](#input\_pipeline\_type)                                                                             | n/a | `string`      | n/a                                                                                          |   yes    |
+| <a name="input_run_integration_tests"></a> [run\_integration\_tests](#input\_run\_integration\_tests)                                                   | n/a | `bool`        | `false`                                                                                      |    no    |
+| <a name="input_source_repository"></a> [source\_repository](#input\_source\_repository)                                                                 | n/a | `string`      | n/a                                                                                          |   yes    |
+| <a name="input_src_bucket"></a> [src\_bucket](#input\_src\_bucket)                                                                                      | n/a | `any`         | n/a                                                                                          |   yes    |
+| <a name="input_target_bucket"></a> [target\_bucket](#input\_target\_bucket)                                                                             | n/a | `any`         | n/a                                                                                          |   yes    |
+| <a name="input_termination_wait_time_in_minutes"></a> [termination\_wait\_time\_in\_minutes](#input\_termination\_wait\_time\_in\_minutes)              | n/a | `number`      | `120`                                                                                        |    no    |
+| <a name="input_test_bucket"></a> [test\_bucket](#input\_test\_bucket)                                                                                   | n/a | `any`         | n/a                                                                                          |   yes    |
+| <a name="input_trigger_branch"></a> [trigger\_branch](#input\_trigger\_branch)                                                                          | n/a | `string`      | n/a                                                                                          |   yes    |
+| <a name="cypress_record_tests"></a> [cypress\_record\_tests](#input\_trigger\_branch)                                                                   | n/a | `bool`        | `false`                                                                                       |    no    |
+| <a name="cypress_record_key"></a> [cypress\_record\_key](#input\_trigger\_branch)                                                                       | n/a | `string`      | n/a                                                                                          |    no    |
 
 ## Outputs
 
