@@ -76,4 +76,5 @@ variable "cypress_record_tests" {
 
 variable "cypress_record_key" {
   type = string
+  default = ""
 }
