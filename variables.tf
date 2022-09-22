@@ -50,21 +50,31 @@ variable "termination_wait_time_in_minutes" {
 }
 
 variable "target_bucket" {
-    
+
 }
 
 variable "test_bucket" {
-    
+
 }
 
 variable "distribution_id" {
-  
+
 }
 
 variable "src_bucket" {
-  
+
 }
 
 variable "test_distribution_id" {
-  
+
+}
+
+variable "cypress_record_tests" {
+  type = bool
+  default = false
+}
+
+variable "cypress_record_key" {
+  type = string
+  default = ""
 }

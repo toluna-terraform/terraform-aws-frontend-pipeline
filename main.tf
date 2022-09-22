@@ -33,7 +33,7 @@ module "build" {
   privileged_mode                       = true
   environment_variables_parameter_store = var.environment_variables_parameter_store
   environment_variables                 = merge(var.environment_variables, {APP_NAME = "${var.app_name}", ENV_TYPE = "${var.env_type}", HOOKS = var.run_integration_tests, PIPELINE_TYPE = var.pipeline_type}) //TODO: try to replace with file
-  buildspec_file                        = templatefile("buildspec.yml.tpl", 
+  buildspec_file                        = templatefile("buildspec.yml.tpl",
   { APP_NAME = var.app_name,
     ENV_TYPE = var.env_type,
     ENV_NAME = var.env_name,
@@ -56,14 +56,16 @@ module "test" {
   s3_bucket                             = "s3-codepipeline-${var.app_name}-${var.env_type}"
   privileged_mode                       = true
   environment_variables_parameter_store = var.environment_variables_parameter_store
-  buildspec_file                        = templatefile("${path.module}/templates/test_buildspec.yml.tpl", 
+  buildspec_file                        = templatefile("${path.module}/templates/test_buildspec.yml.tpl",
   { ENV_NAME = split("-",var.env_name)[0],
     FROM_ENV = var.from_env,
     APP_NAME = var.app_name,
     ENV_TYPE = var.env_type,
     REPO_NAME = var.source_repository,
     BUCKET = var.target_bucket,
-    DISTRIBUTION_ID = var.distribution_id
+    DISTRIBUTION_ID = var.distribution_id,
+    CYPRESS_RECORD_TESTS = var.cypress_record_tests
+    CYPRESS_RECORD_KEY = var.cypress_record_key
     })
 
 }
@@ -77,7 +79,7 @@ module "post" {
   s3_bucket                             = "s3-codepipeline-${var.app_name}-${var.env_type}"
   privileged_mode                       = true
   environment_variables_parameter_store = var.environment_variables_parameter_store
-  buildspec_file                        = templatefile("${path.module}/templates/post_buildspec.yml.tpl", 
+  buildspec_file                        = templatefile("${path.module}/templates/post_buildspec.yml.tpl",
   { ENV_NAME = split("-",var.env_name)[0],
     FROM_ENV = var.from_env,
     APP_NAME = var.app_name,
