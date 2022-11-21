@@ -68,3 +68,14 @@ variable "src_bucket" {
 variable "test_distribution_id" {
   
 }
+
+
+ variable "sq_enabled" {
+   type = bool
+   default = false
+ }
+
+  variable "sq_version" {
+   type = string
+   default = "4.7.0.2747"
+ }
