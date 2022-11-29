@@ -78,3 +78,7 @@ variable "cypress_record_key" {
   type = string
   default = ""
 }
+
+variable "vpc_config" {
+  default = {}
+}

@@ -45,3 +45,7 @@ variable "privileged_mode" {
     default     = true
     description = "set to true if building a docker"
 }
+
+variable "vpc_config" {
+  default = {}
+}
