@@ -1,47 +1,47 @@
-locals{
-    codebuild_name = "codebuild-${var.codebuild_name}-${var.env_name}" 
+locals {
+  codebuild_name = "codebuild-${var.codebuild_name}-${var.env_name}"
 }
 
 
 resource "aws_codebuild_project" "codebuild" {
-  name          = "${local.codebuild_name}"
+  name          = local.codebuild_name
   description   = "Build spec for ${local.codebuild_name}"
   build_timeout = "120"
   service_role  = aws_iam_role.codebuild_role.arn
 
   artifacts {
-    packaging = "NONE"
+    packaging              = "NONE"
     override_artifact_name = false
-    type = "CODEPIPELINE"
+    type                   = "CODEPIPELINE"
   }
 
   environment {
     compute_type                = "BUILD_GENERAL1_SMALL"
-    image                       = "aws/codebuild/amazonlinux2-x86_64-standard:3.0"
+    image                       = "aws/codebuild/amazonlinux2-x86_64-standard:4.0"
     type                        = "LINUX_CONTAINER"
     image_pull_credentials_type = "CODEBUILD"
 
     dynamic "environment_variable" {
       for_each = var.environment_variables
-      
+
       content {
-        name                 = environment_variable.key
-        value                = environment_variable.value
+        name  = environment_variable.key
+        value = environment_variable.value
       }
 
     }
-      dynamic "environment_variable" {
-        for_each = var.environment_variables_parameter_store
-        
-        content {
-          name                 = environment_variable.key
-          value                = environment_variable.value
-          type                 = "PARAMETER_STORE"
-        }
+    dynamic "environment_variable" {
+      for_each = var.environment_variables_parameter_store
 
+      content {
+        name  = environment_variable.key
+        value = environment_variable.value
+        type  = "PARAMETER_STORE"
       }
 
-      privileged_mode = var.privileged_mode  
+    }
+
+    privileged_mode = var.privileged_mode
   }
 
   logs_config {
@@ -52,26 +52,35 @@ resource "aws_codebuild_project" "codebuild" {
   }
 
   source {
-    type            = "CODEPIPELINE"
+    type      = "CODEPIPELINE"
     buildspec = var.buildspec_file
   }
+  
+  dynamic "vpc_config" {
+    for_each = var.vpc_config != {} ? [1] : []
+    content {
+      vpc_id             = var.vpc_config.vpc_id
+      subnets            = var.vpc_config.subnets
+      security_group_ids = var.vpc_config.security_group_ids
+    }
+  }
 
-   source_version =  var.source_branch
+  source_version = var.source_branch
 
-    tags = tomap({
-                Name="codebuild-${local.codebuild_name}",
-                environment=var.env_name,
-                created_by="terraform"
-    })
+  tags = tomap({
+    Name        = "codebuild-${local.codebuild_name}",
+    environment = var.env_name,
+    created_by  = "terraform"
+  })
 }
 
 resource "aws_iam_role" "codebuild_role" {
-  name = "role-${local.codebuild_name}"
+  name               = "role-${local.codebuild_name}"
   assume_role_policy = data.aws_iam_policy_document.codebuild_assume_role_policy.json
 }
 
 resource "aws_iam_role_policy" "cloudWatch_policy" {
-  name = "policy-${local.codebuild_name}"
-  role = aws_iam_role.codebuild_role.id
+  name   = "policy-${local.codebuild_name}"
+  role   = aws_iam_role.codebuild_role.id
   policy = data.aws_iam_policy_document.codebuild_role_policy.json
 }

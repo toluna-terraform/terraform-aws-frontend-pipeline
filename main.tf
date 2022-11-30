@@ -32,6 +32,7 @@ module "build" {
   s3_bucket                             = local.artifacts_bucket_name
   privileged_mode                       = true
   environment_variables_parameter_store = var.environment_variables_parameter_store
+  vpc_config                            = var.vpc_config
   environment_variables                 = merge(var.environment_variables, {APP_NAME = "${var.app_name}", ENV_TYPE = "${var.env_type}", HOOKS = var.run_integration_tests, PIPELINE_TYPE = var.pipeline_type}) //TODO: try to replace with file
   buildspec_file                        = templatefile("buildspec.yml.tpl",
   { APP_NAME = var.app_name,
