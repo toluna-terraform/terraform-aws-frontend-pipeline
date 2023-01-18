@@ -15,7 +15,7 @@ phases:
   build:
     commands:
       - cd service/test
-      - yarn add cypress --dev
+      - yarn
       - |
         if [ "${CYPRESS_RECORD_TESTS}" == "true" ]; then 
           yarn test --config-file=cypress.config.${ENV_NAME}.js --record --key ${CYPRESS_RECORD_KEY}
