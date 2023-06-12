@@ -23,6 +23,7 @@ module "ci-cd-code-pipeline" {
 }
 
 
+
 module "build" {
   source                                = "./modules/build"
   env_name                              = var.env_name
@@ -92,6 +93,4 @@ module "post" {
     DISTRIBUTION_ID = var.distribution_id
     TEST_DISTRIBUTION_ID = var.test_distribution_id
     })
-
 }
-
