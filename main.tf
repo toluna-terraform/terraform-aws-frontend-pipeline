@@ -2,14 +2,6 @@ locals {
   artifacts_bucket_name = "s3-codepipeline-${var.app_name}-${var.env_type}"
 }
 
-module "pipeline_trigger" {
-  source     = "./modules/pipeline_trigger"
-  app_name   = var.app_name
-  env_name   = var.env_name
-  env_type   = var.env_type
-  s3_bucket  = local.artifacts_bucket_name
-}
-
 module "ci-cd-code-pipeline" {
   source                       = "./modules/ci-cd-codepipeline"
   env_name                     = var.env_name
@@ -24,7 +16,6 @@ module "ci-cd-code-pipeline" {
   test_codebuild_projects      = [module.test.attributes.name]
   merge_codebuild_projects     = var.pipeline_type != "dev" ? ["Merge-Waiter"] : []
   depends_on = [
-    module.pipeline_trigger,
     module.build,
     module.post,
     module.test
