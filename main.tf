@@ -94,8 +94,3 @@ module "post" {
     TEST_DISTRIBUTION_ID = var.test_distribution_id
     })
 }
-
-provider "aws" {
-  alias   = "prod"
-  profile = "${var.app_name}-prod"
-}
