@@ -18,6 +18,7 @@ data aws_s3_bucket src_bucket{
 }
 
 resource "aws_s3_bucket_ownership_controls" "src_bucket_oc" {
+  count = data.aws_s3_bucket.src_bucket.id == data.aws_s3_bucket.target_bucket.id ? 1 : 0
   bucket = data.aws_s3_bucket.src_bucket.id
   rule {
     object_ownership = "BucketOwnerPreferred"
