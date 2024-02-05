@@ -1,7 +1,7 @@
 ##### target_bucket #####
 
 data "aws_s3_bucket" "target_bucket"{
-  bucket = var.target_bucket
+  bucket = local.target_bucket
 }
 
 resource "aws_s3_bucket_ownership_controls" "target_bucket_oc" {
@@ -14,11 +14,11 @@ resource "aws_s3_bucket_ownership_controls" "target_bucket_oc" {
 ##### src_bucket #####
 
 data "aws_s3_bucket" "src_bucket"{
-  bucket = var.src_bucket
+  bucket = local.src_bucket
 }
 
 resource "aws_s3_bucket_ownership_controls" "src_bucket_oc" {
-  for_each = var.env_type == "non-prod" ? {"env_type":"non-prod"} : {}
+  for_each = local.env_type == "non-prod" ? {"env_type":"non-prod"} : {}
   bucket = data.aws_s3_bucket.src_bucket.id
   rule {
     object_ownership = "BucketOwnerPreferred"
@@ -28,7 +28,7 @@ resource "aws_s3_bucket_ownership_controls" "src_bucket_oc" {
 ##### test_bucket #####
 
 data "aws_s3_bucket" "test_bucket"{
-  bucket = var.test_bucket
+  bucket = local.test_bucket
 }
 
 resource "aws_s3_bucket_ownership_controls" "test_bucket_oc" {
