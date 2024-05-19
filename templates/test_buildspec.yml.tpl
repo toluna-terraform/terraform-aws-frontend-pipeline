@@ -10,8 +10,7 @@ phases:
   pre_build:
     commands:
       - yum install -y yum-utils
-      - yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
-      - yum install -y xorg-x11-server-Xvfb gtk2-devel gtk3-devel libnotify-devel GConf2 nss libXScrnSaver alsa-lib
+      - yum install -y libgbm
   build:
     commands:
       - cd service/test
