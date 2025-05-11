@@ -69,14 +69,9 @@ variable "test_distribution_id" {
 
 }
 
-variable "cypress_record_tests" {
+variable "tests_report_enabled" {
   type = bool
   default = false
-}
-
-variable "cypress_record_key" {
-  type = string
-  default = ""
 }
 
 variable "vpc_config" {

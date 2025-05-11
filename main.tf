@@ -66,8 +66,7 @@ module "test" {
     REPO_NAME = var.source_repository,
     BUCKET = var.target_bucket,
     DISTRIBUTION_ID = var.distribution_id,
-    CYPRESS_RECORD_TESTS = var.cypress_record_tests
-    CYPRESS_RECORD_KEY = var.cypress_record_key
+    TESTS_REPORT_ENABLED = var.tests_report_enabled
     })
 
 }
